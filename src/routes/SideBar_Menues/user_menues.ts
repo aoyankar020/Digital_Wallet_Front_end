@@ -84,7 +84,7 @@ export const userSidebarsRoutes = [
     items: [
       {
         title: "Profile",
-        url: "",
+        url: "/user/me",
         Component: Profile,
         Icon: User,
       },
