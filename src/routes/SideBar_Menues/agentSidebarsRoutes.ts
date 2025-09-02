@@ -1,52 +1,78 @@
-import AgentTransactions from "@/pages/private/agent/agentPersonalTransactionHistory";
-import CashIn from "@/pages/private/agent/cashin";
-import Cashout from "@/pages/private/agent/cashout";
-import Profile from "@/pages/private/profile";
-import Token from "@/pages/private/token";
+import { lazy } from "react";
+const Token = lazy(() => import("@/pages/private/token"));
+const Profile = lazy(() => import("@/pages/private/profile"));
+const Cashout = lazy(() => import("@/pages/private/agent/cashout"));
+const CashIn = lazy(() => import("@/pages/private/agent/cashin"));
+const AgentTransactions = lazy(
+  () => import("@/pages/private/agent/agentPersonalTransactionHistory")
+);
+const DashboardHome = lazy(() => import("@/pages/dashboard/home"));
 
 import Wallet from "@/pages/private/Wallet";
+import { LayoutDashboard } from "lucide-react";
 
 export const agentSidebarsRoutes = [
   {
+    title: "Dashboard",
+    url: "#",
+    Icon: LayoutDashboard,
+    items: [
+      {
+        title: "Dashboard",
+        url: "",
+        Icon: LayoutDashboard,
+        Component: DashboardHome,
+      },
+    ],
+  },
+  {
     title: "Features",
     url: "#",
+    Icon: LayoutDashboard,
     items: [
       {
         title: "Add Money",
         url: "/agent/cash-in",
         Component: CashIn,
+        Icon: LayoutDashboard,
       },
       {
         title: "Withdraw Money",
         url: "/agent/cash-out",
         Component: Cashout,
+        Icon: LayoutDashboard,
       },
       {
         title: "Wallets",
         url: "/agent/wallet",
         Component: Wallet,
+        Icon: LayoutDashboard,
       },
       {
         title: "Transaction",
         url: "/agent/transaction-history",
         Component: AgentTransactions,
+        Icon: LayoutDashboard,
       },
 
       {
         title: "Access Token",
         url: "/agent/newagenttoken",
         Component: Token,
+        Icon: LayoutDashboard,
       },
     ],
   },
   {
     title: "Settings",
     url: "#",
+    Icon: LayoutDashboard,
     items: [
       {
         title: "Profile",
         url: "/agent/me",
         Component: Profile,
+        Icon: LayoutDashboard,
       },
     ],
   },

@@ -18,10 +18,12 @@ export interface ILayoutProps {
 export interface IAdminSidebar {
   title: string;
   url: string;
+  Icon: ComponentType<{ className?: string }>;
   items: {
     title: string;
     url: string;
     Component: ComponentType;
+    Icon: ComponentType<{ className?: string }>;
   }[];
 }
 

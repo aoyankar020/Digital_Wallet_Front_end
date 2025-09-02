@@ -12,7 +12,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { ModeToggle } from "./them-toggler";
-import { Link } from "react-router";
+import { Link, Navigate, useNavigate } from "react-router";
 import { useState } from "react";
 
 import AuthModal from "../modal/authmodal";
@@ -29,7 +29,7 @@ import { ROLE } from "@/constant/role";
 
 // Navigation links array to be used in both desktop and mobile menus
 const navigationLinks = [
-  { href: "/home", label: "Home", active: true, role: "public" },
+  { href: "home", label: "Home", active: true, role: "public" },
   { href: "about", label: "About", role: "public" },
   { href: "features", label: "Features", role: "public" },
   { href: "pricing", label: "Pricing", role: "public" },
@@ -39,8 +39,9 @@ const navigationLinks = [
   { href: "/user", label: "Dashboard", role: ROLE.USER },
   { href: "/agent", label: "Dashboard", role: ROLE.AGENT },
 ];
-const MotionLink = motion(Link);
+
 export default function Navbar() {
+  const navigate = useNavigate();
   const { data: userData } = useGetMeQuery(undefined);
   const { data: agentData } = useGetMeAgentQuery(undefined);
   const user = userData?.data || agentData?.data;
@@ -55,6 +56,7 @@ export default function Navbar() {
     dispatch(authApi.util.resetApiState());
     if (result?.data?.success) {
       toast.success(`${result?.data?.message}`);
+      navigate("/home");
     }
   };
   return (
@@ -105,7 +107,7 @@ export default function Navbar() {
             <PopoverContent align="start" className="w-36 p-1 md:hidden">
               <NavigationMenu className="max-w-none *:w-full">
                 <NavigationMenuList className="flex-col items-start gap-0 md:gap-2">
-                  {navigationLinks.map((link, index) => (
+                  {/* {navigationLinks.map((link, index) => (
                     <NavigationMenuItem key={index} className="w-full">
                       <NavigationMenuLink asChild className="py-1.5">
                         <motion.div
@@ -116,6 +118,38 @@ export default function Navbar() {
                         </motion.div>
                       </NavigationMenuLink>
                     </NavigationMenuItem>
+                  ))} */}
+                  {navigationLinks.map((link, index) => (
+                    <>
+                      {link.role === "public" && (
+                        <NavigationMenuItem key={index}>
+                          <motion.div
+                            whileHover={{ scale: 1.1, originX: 0 }}
+                            whileTap={{ scale: 0.95 }}
+                          >
+                            <NavigationMenuLink
+                              active={link.active}
+                              asChild
+                              className="text-muted-foreground hover:text-primary py-1.5 font-medium"
+                            >
+                              <Link to={link.href}>{link.label}</Link>
+                              {/* <MotionLink to={link.href}>{link.label}</MotionLink> */}
+                            </NavigationMenuLink>
+                          </motion.div>
+                        </NavigationMenuItem>
+                      )}
+                      {link.role === userRole && (
+                        <NavigationMenuItem key={index}>
+                          <NavigationMenuLink
+                            active={link.active}
+                            asChild
+                            className="text-muted-foreground hover:text-primary py-1.5 font-medium"
+                          >
+                            <Link to={link.href}>{link.label}</Link>
+                          </NavigationMenuLink>
+                        </NavigationMenuItem>
+                      )}
+                    </>
                   ))}
                 </NavigationMenuList>
               </NavigationMenu>

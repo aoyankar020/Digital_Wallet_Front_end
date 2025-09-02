@@ -24,6 +24,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const data = {
     navMain: generateSideBar(userData?.data?.role || agentData?.data?.role),
   };
+
+  console.log("SIDE MENUES DATA:", data);
   return (
     <Sidebar {...props}>
       <SidebarHeader>
@@ -47,7 +49,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 {item.items.map((item) => (
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton asChild>
-                      <Link to={item.url}>{item.title}</Link>
+                      <Link className="flex gap-2" to={item.url}>
+                        <item.Icon className="w-4 h-4 text-muted-foreground/70 " />
+                        {item.title}
+                      </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 ))}
