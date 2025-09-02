@@ -24,20 +24,22 @@ import {
 } from "@/redux/Api/auth.api";
 import { toast } from "sonner";
 import { useAppDispatch } from "@/hooks/reduxHook";
-
+import { motion } from "framer-motion";
 import { ROLE } from "@/constant/role";
 
 // Navigation links array to be used in both desktop and mobile menus
 const navigationLinks = [
-  { href: "/", label: "Home", active: true, role: "public" },
+  { href: "/home", label: "Home", active: true, role: "public" },
   { href: "about", label: "About", role: "public" },
-  { href: "contact", label: "Contact", role: "public" },
+  { href: "features", label: "Features", role: "public" },
+  { href: "pricing", label: "Pricing", role: "public" },
   { href: "faq", label: "FAQ", role: "public" },
+  { href: "contact", label: "Contact", role: "public" },
   { href: "/admin", label: "Dashboard", role: ROLE.ADMIN },
   { href: "/user", label: "Dashboard", role: ROLE.USER },
   { href: "/agent", label: "Dashboard", role: ROLE.AGENT },
 ];
-
+const MotionLink = motion(Link);
 export default function Navbar() {
   const { data: userData } = useGetMeQuery(undefined);
   const { data: agentData } = useGetMeAgentQuery(undefined);
@@ -56,7 +58,12 @@ export default function Navbar() {
     }
   };
   return (
-    <header className="border-b px-4 md:px-6">
+    <motion.header
+      initial={{ opacity: 0, y: -30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, type: "spring", stiffness: 120 }}
+      className="border-b px-4 md:px-6 sticky top-0 z-50 bg-background"
+    >
       <div className="flex h-16 items-center justify-between gap-4">
         {/* Left side */}
         <div className="flex items-center gap-2">
@@ -101,7 +108,12 @@ export default function Navbar() {
                   {navigationLinks.map((link, index) => (
                     <NavigationMenuItem key={index} className="w-full">
                       <NavigationMenuLink asChild className="py-1.5">
-                        <Link to={link.href}>{link.label}</Link>
+                        <motion.div
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          <Link to={link.href}>{link.label}</Link>
+                        </motion.div>
                       </NavigationMenuLink>
                     </NavigationMenuItem>
                   ))}
@@ -121,13 +133,19 @@ export default function Navbar() {
                   <>
                     {link.role === "public" && (
                       <NavigationMenuItem key={index}>
-                        <NavigationMenuLink
-                          active={link.active}
-                          asChild
-                          className="text-muted-foreground hover:text-primary py-1.5 font-medium"
+                        <motion.div
+                          whileHover={{ scale: 1.1, originX: 0 }}
+                          whileTap={{ scale: 0.95 }}
                         >
-                          <Link to={link.href}>{link.label}</Link>
-                        </NavigationMenuLink>
+                          <NavigationMenuLink
+                            active={link.active}
+                            asChild
+                            className="text-muted-foreground hover:text-primary py-1.5 font-medium"
+                          >
+                            <Link to={link.href}>{link.label}</Link>
+                            {/* <MotionLink to={link.href}>{link.label}</MotionLink> */}
+                          </NavigationMenuLink>
+                        </motion.div>
                       </NavigationMenuItem>
                     )}
                     {link.role === userRole && (
@@ -172,11 +190,19 @@ export default function Navbar() {
           )}
 
           <AuthModal open={open} setOpen={setOpen} />
-          <Button asChild size="sm" className="text-sm">
+          {/* <Button asChild size="sm" className="text-sm">
             <a href="#">Get Started</a>
-          </Button>
+          </Button> */}
+          <motion.div
+            whileHover={{ scale: 1.1, originX: 0 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Button asChild size="sm" className="text-sm">
+              <a href="#">Get Started</a>
+            </Button>
+          </motion.div>
         </div>
       </div>
-    </header>
+    </motion.header>
   );
 }

@@ -13,6 +13,9 @@ import { agentSidebarsRoutes } from "./SideBar_Menues/agentSidebarsRoutes";
 import Unauthorized from "@/pages/errors/unauthorized";
 import { ROLE, type TROLE } from "@/constant/role";
 import { AutorizationhComponent } from "@/utils/authComponent";
+import Features from "@/pages/public/features";
+import Pricing from "@/pages/public/pricing";
+import Home from "@/pages/public/home";
 
 export const router = createBrowserRouter([
   {
@@ -20,8 +23,16 @@ export const router = createBrowserRouter([
     Component: App,
     children: [
       {
+        path: "home",
+        Component: Home,
+      },
+      {
         path: "about",
         Component: About,
+      },
+      {
+        path: "pricing",
+        Component: Pricing,
       },
       {
         path: "contact",
@@ -30,6 +41,10 @@ export const router = createBrowserRouter([
       {
         path: "faq",
         Component: FAQ,
+      },
+      {
+        path: "features",
+        Component: Features,
       },
     ],
   },
