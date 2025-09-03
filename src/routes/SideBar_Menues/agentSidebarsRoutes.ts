@@ -6,7 +6,7 @@ const CashIn = lazy(() => import("@/pages/private/agent/cashin"));
 const AgentTransactions = lazy(
   () => import("@/pages/private/agent/agentPersonalTransactionHistory")
 );
-const DashboardHome = lazy(() => import("@/pages/dashboard/home"));
+const agentOverview = lazy(() => import("@/pages/private/agent/agentOverview"));
 
 import Wallet from "@/pages/private/Wallet";
 import { LayoutDashboard } from "lucide-react";
@@ -18,10 +18,10 @@ export const agentSidebarsRoutes = [
     Icon: LayoutDashboard,
     items: [
       {
-        title: "Dashboard",
+        title: "Overview",
         url: "",
         Icon: LayoutDashboard,
-        Component: DashboardHome,
+        Component: agentOverview,
       },
     ],
   },

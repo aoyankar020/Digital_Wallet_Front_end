@@ -111,7 +111,6 @@ export default function AuthModal({
   });
 
   const loginSubmit = async (values: z.infer<typeof loginformSchema>) => {
-    console.log("Values", values);
     const { email, password, AsAgent } = values;
 
     const credentials = {
@@ -120,63 +119,37 @@ export default function AuthModal({
     };
 
     try {
+      let result;
       if (AsAgent) {
-        const result = await loginAgent(credentials).unwrap();
-        if (result.success) {
-          console.log("Login Result:", result);
-          toast.success(`${result?.message}` || "Agent login successful");
-          setOpen(false);
-          dispatch(
-            setUser({
-              role: result?.data?.data?.role,
-              email: result?.data?.data?.email,
-            })
-          );
-          setTimeout(() => {
-            navigate("/agent");
-          }, 1000);
-        }
+        result = await loginAgent(credentials).unwrap();
+        console.log("Login Result", result);
       } else {
-        const result = await loginUser(credentials).unwrap();
-
-        if (result?.success) {
-          const role = result?.data?.data?.role;
-          if (role === "USER") {
-            console.log("Login Result:", result);
-            toast.success(`${result?.message}`);
-            setOpen(false);
-            // small delay to ensure cookies are set
-            dispatch(
-              setUser({
-                role: result?.data?.data?.role,
-                email: result?.data?.data?.email,
-              })
-            );
-            setTimeout(() => {
-              navigate("/user");
-            }, 1000);
-          } else {
-            toast.success(`${result?.message}`);
-            setOpen(false);
-            dispatch(
-              setUser({
-                role: result?.data?.data?.role,
-                email: result?.data?.data?.email,
-              })
-            );
-            // small delay to ensure cookies are set
-            setTimeout(() => {
-              navigate("/admin");
-            }, 1000);
-          }
-        }
+        result = await loginUser(credentials).unwrap();
+        console.log("Login Result", result);
       }
-    } catch (error) {
-      console.error("Login Error:", error);
-      toast.error(String(error));
+      if (result.success) {
+        const role = result?.data?.data?.role;
+        const email = result?.data?.data?.email;
+        toast.success(`${result?.message}` || "Login successful");
+        setOpen(false);
+        dispatch(setUser({ role, email }));
+        // delay before redirect
+        setTimeout(() => {
+          if (AsAgent) {
+            navigate("/agent");
+          } else if (role === "USER") {
+            navigate("/user");
+          } else {
+            navigate("/admin");
+          }
+        }, 1000);
+      }
+    } catch (error: any) {
+      console.error("Login Error:", error?.data?.message);
+      toast.warning(error?.data?.message);
+    } finally {
+      loginform.reset();
     }
-
-    loginform.reset();
   };
   const signUpSubmit = async (values: z.infer<typeof signUpformSchema>) => {
     const { phone, name, email, password, AsAgent } = values;
@@ -254,6 +227,7 @@ export default function AuthModal({
                       <FormLabel>Email</FormLabel>
                       <FormControl>
                         <Input
+                          autoComplete="email"
                           placeholder="hi@yourcompany.com"
                           type="email"
                           {...field}

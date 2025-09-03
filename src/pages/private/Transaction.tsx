@@ -43,6 +43,7 @@ function Transaction() {
     queryParams.type = filterType;
   }
   const { data, isLoading } = useGetTransactionQuery(queryParams);
+
   if (isLoading)
     return (
       <div className="flex justify-center items-center h-64 sweet-loading">

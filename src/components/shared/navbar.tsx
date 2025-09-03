@@ -56,7 +56,7 @@ export default function Navbar() {
     dispatch(authApi.util.resetApiState());
     if (result?.data?.success) {
       toast.success(`${result?.data?.message}`);
-      navigate("/home");
+      navigate("/");
     }
   };
   return (

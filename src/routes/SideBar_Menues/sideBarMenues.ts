@@ -16,7 +16,7 @@ export const adminSidebarsRoutes = [
     url: "#",
     items: [
       {
-        title: "Dashboard",
+        title: "Overview",
         url: "",
         Icon: LayoutDashboard,
         Component: DashboardHome,

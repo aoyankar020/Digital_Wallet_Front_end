@@ -3,6 +3,10 @@ import { useState, useEffect } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 
 import Hero from "@/components/shared/hero";
+import Contact from "./contact";
+import Pricing from "./pricing";
+import About from "./about";
+import Features from "./features";
 
 // // Navbar Component
 // function Navbar() {
@@ -55,7 +59,7 @@ function Stats() {
   }, []);
 
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 bg-background">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
         {loading ? (
           <>
@@ -95,9 +99,13 @@ function Stats() {
 // Home Page
 function Home() {
   return (
-    <div className="py-6">
+    <div className="mt-20">
       <Hero />
+      <About />
       <Stats />
+      <Pricing />
+      <Features />
+      <Contact />
     </div>
   );
 }

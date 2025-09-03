@@ -44,7 +44,7 @@ function Hero() {
       initial={"hidden"}
       animate={"visible"}
       variants={motionPageController}
-      className="bg-gradient-to-r from-primary/80 to-sidebar-primary/100 text-muted py-20"
+      className="bg-gradient-to-r from-primary/80 to-sidebar-primary/100 text-muted flex justify-center items-center min-h-1/2 p-20"
     >
       <div className="max-w-6xl mx-auto px-6 flex flex-col items-center text-center">
         <motion.h1

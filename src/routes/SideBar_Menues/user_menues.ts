@@ -12,7 +12,7 @@ import {
 import { lazy } from "react";
 
 const AddMoney = lazy(() => import("@/pages/private/user/add_money"));
-const DashboardHome = lazy(() => import("@/pages/dashboard/home"));
+const userOverview = lazy(() => import("@/pages/private/user/overview"));
 const Profile = lazy(() => import("@/pages/private/profile"));
 const SendMoney = lazy(() => import("@/pages/private/user/send_money"));
 const Token = lazy(() => import("@/pages/private/token"));
@@ -27,9 +27,9 @@ export const userSidebarsRoutes = [
     url: "#",
     items: [
       {
-        title: "Dashboard",
+        title: "Overview",
         url: "",
-        Component: DashboardHome,
+        Component: userOverview,
         Icon: LayoutDashboard,
       },
     ],

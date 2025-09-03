@@ -16,15 +16,25 @@ import {
 import { useGetWalletQuery } from "@/redux/Api/agentAuth";
 import { useGetMeQuery } from "@/redux/Api/auth.api";
 import { useGetuserWalletQuery } from "@/redux/Api/userApi";
+import { PulseLoader } from "react-spinners";
 
 function Wallet() {
-  const { data: user } = useGetMeQuery(undefined);
+  const { data: user, isLoading: userLoading } = useGetMeQuery(undefined);
   const role = user?.data?.role;
 
   // Call hooks unconditionally
-  const { data: agentWallet } = useGetWalletQuery(undefined);
-  const { data: userWallet } = useGetuserWalletQuery(undefined);
-
+  const { data: agentWallet, isLoading: agentLoading } =
+    useGetWalletQuery(undefined);
+  const { data: userWallet, isLoading: uLoading } =
+    useGetuserWalletQuery(undefined);
+  const loading = userLoading || agentLoading || uLoading;
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-64 sweet-loading">
+        <PulseLoader color={"#FF7917"} size={15} speedMultiplier={1} />
+      </div>
+    );
+  }
   // Choose wallet data based on role
   const wallet =
     role === "USER" || role === "ADMIN" ? userWallet?.data : agentWallet?.data;

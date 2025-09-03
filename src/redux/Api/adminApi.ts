@@ -50,14 +50,13 @@ export const adminApi = baseApi.injectEndpoints({
       },
       providesTags: ["TRANSACTION"],
     }),
-    // getAllTransactions: builder.query({
-    //   query: () => ({
-    //     url: "/admin/transaction-history",
-    //     method: "GET",
-    //   }),
-    //   providesTags: ["TRANSACTION"],
-    // }),
 
+    getOverviews: builder.query({
+      query: () => ({
+        url: "/admin/overview",
+        method: "GET",
+      }),
+    }),
     getMe: builder.query({
       query: () => ({
         url: "/user/me",
@@ -75,4 +74,5 @@ export const {
   useGetWalletsQuery,
   useGetAllTransactionsQuery,
   useBlockAgentMutation,
+  useGetOverviewsQuery,
 } = adminApi;
