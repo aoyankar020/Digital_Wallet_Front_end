@@ -16,11 +16,13 @@ import { AutorizationhComponent } from "@/utils/authComponent";
 import Features from "@/pages/public/features";
 import Pricing from "@/pages/public/pricing";
 import Home from "@/pages/public/home";
+import NotFound from "@/pages/errors/notFound";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     Component: App,
+    errorElement: <NotFound />,
     children: [
       {
         Component: Home,
@@ -51,6 +53,7 @@ export const router = createBrowserRouter([
   {
     path: "/admin",
     Component: AutorizationhComponent(DashboardLayout, ROLE.ADMIN as TROLE),
+    errorElement: <NotFound />,
     children: [
       ...generateRoutes(adminSidebarsRoutes),
       // { index: true, element: <Navigate to={"/admin/users"} /> },
@@ -59,11 +62,13 @@ export const router = createBrowserRouter([
   {
     path: "/user",
     Component: AutorizationhComponent(DashboardLayout, ROLE.USER as TROLE),
+    errorElement: <NotFound />,
     children: [...generateRoutes(userSidebarsRoutes)],
   },
   {
     path: "/agent",
     Component: AutorizationhComponent(DashboardLayout, ROLE.AGENT as TROLE),
+    errorElement: <NotFound />,
     children: [...generateRoutes(agentSidebarsRoutes)],
   },
   {

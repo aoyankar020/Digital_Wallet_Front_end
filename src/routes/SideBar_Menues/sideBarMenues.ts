@@ -52,18 +52,6 @@ export const adminSidebarsRoutes = [
         Component: Transitions,
         Icon: LayoutDashboard,
       },
-      {
-        title: "Approve Agent",
-        url: "/admin/approve/agent",
-        Component: ApproveAgent,
-        Icon: LayoutDashboard,
-      },
-      {
-        title: "Block Wallet",
-        url: "/admin/approve/wallet",
-        Component: BlockWallet,
-        Icon: LayoutDashboard,
-      },
     ],
   },
   {
@@ -73,7 +61,7 @@ export const adminSidebarsRoutes = [
     items: [
       {
         title: "Profile",
-        url: "",
+        url: "/admin/me",
         Icon: LayoutDashboard,
         Component: Profile,
       },

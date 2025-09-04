@@ -51,7 +51,14 @@ function AddMoney() {
         form.reset();
       }
     } catch (error) {
-      toast.error(String(error));
+      const errorMessage =
+        typeof error === "object" &&
+        error !== null &&
+        "data" in error &&
+        (error as any).data?.message
+          ? (error as any).data.message
+          : "An error occurred";
+      toast.warning(`${errorMessage} `);
     }
   };
   return (

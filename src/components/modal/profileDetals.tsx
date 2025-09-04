@@ -107,7 +107,7 @@ export default function ProfileDetails({
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent className="w-full max-w-2/5 px-20 py-10 !max-w-2/5">
+      <DialogContent className="w-full max-w-lg sm:max-w-xl md:max-w-2xl px-8 sm:px-10 md:px-16 py-6 ">
         <div className="flex flex-col items-center gap-2">
           <div
             className="flex size-11 shrink-0 items-center justify-center  "

@@ -21,6 +21,7 @@ export const adminApi = baseApi.injectEndpoints({
         url: "/admin/agents",
         method: "GET",
       }),
+      providesTags: ["AGENTS"],
     }),
     getWallets: builder.query({
       query: () => ({
@@ -34,6 +35,7 @@ export const adminApi = baseApi.injectEndpoints({
         method: "PATCH",
         data: data,
       }),
+      invalidatesTags: ["AGENTS"],
     }),
     getAllTransactions: builder.query({
       query: (params?: { type?: string; page?: number; limit?: number }) => {

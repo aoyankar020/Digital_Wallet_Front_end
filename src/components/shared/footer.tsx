@@ -1,4 +1,5 @@
 import Logo from "@/assets/icon/logo";
+import { Link } from "react-router";
 function Footer() {
   return (
     <>
@@ -16,8 +17,8 @@ function Footer() {
 
               <ul className="mt-8 flex gap-6 justify-center sm:justify-start  ">
                 <li>
-                  <a
-                    href="#"
+                  <Link
+                    to="https://www.facebook.com/aoyan.kar.2025/"
                     rel="noreferrer"
                     target="_blank"
                     className="text-muted-foreground transition hover:opacity-75"
@@ -38,12 +39,12 @@ function Footer() {
                         clipRule="evenodd"
                       />
                     </svg>
-                  </a>
+                  </Link>
                 </li>
 
                 <li>
-                  <a
-                    href="#"
+                  <Link
+                    to={"https://www.instagram.com/aoyankar/"}
                     rel="noreferrer"
                     target="_blank"
                     className="text-muted-foreground transition hover:opacity-75"
@@ -64,7 +65,7 @@ function Footer() {
                         clipRule="evenodd"
                       />
                     </svg>
-                  </a>
+                  </Link>
                 </li>
 
                 <li>
@@ -90,8 +91,8 @@ function Footer() {
                 </li>
 
                 <li>
-                  <a
-                    href="#"
+                  <Link
+                    to="https://github.com/aoyankar020"
                     rel="noreferrer"
                     target="_blank"
                     className="text-muted-foreground transition hover:opacity-75"
@@ -112,7 +113,7 @@ function Footer() {
                         clipRule="evenodd"
                       />
                     </svg>
-                  </a>
+                  </Link>
                 </li>
 
                 <li>
@@ -205,33 +206,12 @@ function Footer() {
 
                 <ul className="mt-6 space-y-4 text-sm">
                   <li>
-                    <a
-                      href="#"
-                      className="text-muted-foreground transition hover:opacity-75 "
-                    >
-                      {" "}
-                      About{" "}
-                    </a>
-                  </li>
-
-                  <li>
-                    <a
-                      href="#"
+                    <Link
+                      to="about"
                       className="text-muted-foreground transition hover:opacity-75"
                     >
-                      {" "}
-                      Meet the Team{" "}
-                    </a>
-                  </li>
-
-                  <li>
-                    <a
-                      href="#"
-                      className="text-muted-foreground transition hover:opacity-75"
-                    >
-                      {" "}
-                      Accounts Review{" "}
-                    </a>
+                      About
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -243,33 +223,38 @@ function Footer() {
 
                 <ul className="mt-6 space-y-4 text-sm">
                   <li>
-                    <a
-                      href="#"
+                    <Link
+                      to="contact"
                       className="text-muted-foreground transition hover:opacity-75"
                     >
-                      {" "}
-                      Contact{" "}
-                    </a>
+                      Contact
+                    </Link>
                   </li>
 
                   <li>
-                    <a
-                      href="#"
+                    <Link
+                      to="faq"
                       className="text-muted-foreground transition hover:opacity-75"
                     >
-                      {" "}
-                      FAQs{" "}
-                    </a>
+                      FAQs
+                    </Link>
                   </li>
 
                   <li>
-                    <a
-                      href="#"
+                    <Link
+                      to="pricing"
                       className="text-muted-foreground transition hover:opacity-75"
                     >
-                      {" "}
-                      Live Chat{" "}
-                    </a>
+                      Pricing
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="features"
+                      className="text-muted-foreground transition hover:opacity-75"
+                    >
+                      Features
+                    </Link>
                   </li>
                 </ul>
               </div>

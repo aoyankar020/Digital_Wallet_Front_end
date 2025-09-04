@@ -124,18 +124,6 @@ function Agents() {
                       handleApprove({
                         phone: profile?.phone,
                         activeStatus: profile?.isActive,
-                      })
-                    }
-                    className="cursor-pointer"
-                    size={"sm"}
-                  >
-                    {profile.isVerified ? "Suspend" : "Continued"}
-                  </Button>
-                  <Button
-                    onClick={() =>
-                      handleApprove({
-                        phone: profile?.phone,
-                        activeStatus: profile?.isActive,
                         approveStatus: profile?.isApproved,
                       })
                     }

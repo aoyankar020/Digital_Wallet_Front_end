@@ -107,18 +107,6 @@ export default function Navbar() {
             <PopoverContent align="start" className="w-36 p-1 md:hidden">
               <NavigationMenu className="max-w-none *:w-full">
                 <NavigationMenuList className="flex-col items-start gap-0 md:gap-2">
-                  {/* {navigationLinks.map((link, index) => (
-                    <NavigationMenuItem key={index} className="w-full">
-                      <NavigationMenuLink asChild className="py-1.5">
-                        <motion.div
-                          whileHover={{ scale: 1.1 }}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          <Link to={link.href}>{link.label}</Link>
-                        </motion.div>
-                      </NavigationMenuLink>
-                    </NavigationMenuItem>
-                  ))} */}
                   {navigationLinks.map((link, index) => (
                     <>
                       {link.role === "public" && (
@@ -203,38 +191,39 @@ export default function Navbar() {
         <div className="flex items-center gap-2">
           <ModeToggle />
           {user?.email && (
-            <Button
-              onClick={() => handleLogout()}
-              variant="ghost"
-              size="sm"
-              className="text-sm"
+            <motion.div
+              whileHover={{ scale: 1.1, originX: 0 }}
+              whileTap={{ scale: 0.95 }}
             >
-              Sign out
-            </Button>
+              <Button
+                onClick={() => handleLogout()}
+                size="sm"
+                className="text-sm"
+              >
+                Sign out
+              </Button>
+            </motion.div>
           )}
           {!user?.email && (
-            <Button
-              onClick={() => setOpen(true)}
-              variant="ghost"
-              size="sm"
-              className="text-sm"
+            <motion.div
+              whileHover={{ scale: 1.1, originX: 0 }}
+              whileTap={{ scale: 0.95 }}
             >
-              Sign in
-            </Button>
+              <Button
+                onClick={() => setOpen(true)}
+                variant="ghost"
+                size="sm"
+                className="text-sm"
+              >
+                Sign in
+              </Button>
+            </motion.div>
           )}
 
           <AuthModal open={open} setOpen={setOpen} />
           {/* <Button asChild size="sm" className="text-sm">
             <a href="#">Get Started</a>
           </Button> */}
-          <motion.div
-            whileHover={{ scale: 1.1, originX: 0 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Button asChild size="sm" className="text-sm">
-              <a href="#">Get Started</a>
-            </Button>
-          </motion.div>
         </div>
       </div>
     </motion.header>
