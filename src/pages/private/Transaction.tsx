@@ -60,7 +60,7 @@ function Transaction() {
         <u>History of Your Transactions </u>
       </p>
       <div className="py-8 flex justify-between">
-        <div className="mb-4">
+        <div id="filter" className="mb-4">
           <Select
             value={filterType}
             onValueChange={(value) => setFilterType(value)}
@@ -79,7 +79,7 @@ function Transaction() {
             </SelectContent>
           </Select>
         </div>
-        <div className="mb-4">
+        <div id="limit" className="mb-4">
           <Select
             value={String(limit)}
             onValueChange={(value) => {
@@ -102,7 +102,7 @@ function Transaction() {
           </Select>
         </div>
       </div>
-      <Table className="">
+      <Table id="transactions" className="">
         <TableHeader>
           <TableRow>
             <TableHead className="text-start">Date</TableHead>
@@ -152,7 +152,7 @@ function Transaction() {
       </Table>
       <div className="py-6">
         <Pagination>
-          <PaginationContent>
+          <PaginationContent id="pagination">
             <PaginationItem>
               <PaginationPrevious
                 onClick={() => page > 1 && setPage(page - 1)}

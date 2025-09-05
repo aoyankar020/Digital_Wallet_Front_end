@@ -5,7 +5,6 @@ import {
   TableBody,
   TableCaption,
   TableCell,
-  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
@@ -23,12 +22,12 @@ function Agents() {
   const [open, setOpen] = useState(false);
   const [selectedProfile, setSelectedProfile] =
     useState<Partial<IProfile> | null>(null);
-  const [status, setStatus] = useState(true);
+  const [, setStatus] = useState(true);
 
   const { data } = useGetAgentsQuery(undefined);
   const [blockAgent] = useBlockAgentMutation();
   const profiles = data?.data ?? [];
-  console.log("profiles", profiles);
+
   let payload;
   const handleBlock = async (data: IApprove) => {
     if (data?.activeStatus === "ACTIVE") {
@@ -45,30 +44,8 @@ function Agents() {
         phone: data.phone,
         activeStatus: "ACTIVE",
       };
-      const result = await blockAgent(payload).unwrap();
-      console.log("Result:", result);
+      await blockAgent(payload).unwrap();
     }
-
-    // if (data.activeStatus) {
-    //   payload = {
-    //     phone: data.phone,
-    //     activeStatus: "BLOCKED",
-    //     approveStatus: false,
-    //     varifiedStatus: false,
-    //   };
-    //   const result = await blockAgent(payload).unwrap();
-    //   setStatus(false);
-    //   console.log("R", result);
-    // } else {
-    //   payload = {
-    //     phone: data.phone,
-    //     activeStatus: "ACTIVE",
-    //   };
-    //   const result = await blockAgent(payload).unwrap();
-    //   setStatus(true);
-
-    //   console.log("Unblock res :", result);
-    // }
   };
   const handleApprove = async (data: IApprove) => {
     if (data.approveStatus) {
@@ -76,18 +53,15 @@ function Agents() {
         phone: data.phone,
         approveStatus: !data?.approveStatus,
       };
-      const result = await blockAgent(payload).unwrap();
+      await blockAgent(payload).unwrap();
       setStatus(false);
-      console.log("Approve res", result);
     } else {
       payload = {
         phone: data.phone,
         approveStatus: !data.approveStatus,
       };
-      const result = await blockAgent(payload).unwrap();
+      await blockAgent(payload).unwrap();
       setStatus(true);
-
-      console.log("Approve res :", result);
     }
   };
   return (

@@ -48,3 +48,13 @@ export interface CommonModalProps {
   data: Partial<IProfile> | null;
   onSave?: (updatedData: Partial<IProfile>) => void; // optional save callback
 }
+
+// types/driverStep.ts
+export interface DriverStep {
+  element: string;
+  popover: {
+    title: string;
+    description: string;
+    position?: "top" | "bottom" | "left" | "right" | "auto"; // optional
+  };
+}

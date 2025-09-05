@@ -1,5 +1,5 @@
-import { ROLE, type TROLE } from "@/constant/role";
-import { useAppSelector } from "@/hooks/reduxHook";
+import { type TROLE } from "@/constant/role";
+
 import { useGetMeAgentQuery, useGetMeQuery } from "@/redux/Api/auth.api";
 
 import type { ComponentType } from "react";

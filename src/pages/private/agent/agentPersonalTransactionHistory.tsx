@@ -60,7 +60,7 @@ function AgentTransactions() {
         <u>History of Your Transactions</u>
       </p>
       <div className="py-8 flex justify-between">
-        <div className="mb-4">
+        <div id="filter" className="mb-4">
           <Select
             value={filterType}
             onValueChange={(value) => setFilterType(value)}
@@ -78,7 +78,7 @@ function AgentTransactions() {
             </SelectContent>
           </Select>
         </div>
-        <div className="mb-4">
+        <div id="limit" className="mb-4">
           <Select
             value={String(limit)}
             onValueChange={(value) => {
@@ -101,7 +101,7 @@ function AgentTransactions() {
           </Select>
         </div>
       </div>
-      <Table className="">
+      <Table id="transactions" className="">
         {/* <TableCaption>A list of your recent Transactions.</TableCaption> */}
         <TableHeader>
           <TableRow>
@@ -152,7 +152,7 @@ function AgentTransactions() {
       </Table>
       <div className=" my-6">
         <Pagination>
-          <PaginationContent>
+          <PaginationContent id="pagination">
             <PaginationItem>
               <PaginationPrevious
                 onClick={() => page > 1 && setPage(page - 1)}

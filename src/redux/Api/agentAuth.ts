@@ -8,10 +8,7 @@ export const agentApi = baseApi.injectEndpoints({
         method: "POST",
         data: userinfo,
       }),
-      invalidatesTags: (result, error, arg) => [
-        { type: "WALLET" },
-        { type: "TRANSACTION" },
-      ],
+      invalidatesTags: () => [{ type: "WALLET" }, { type: "TRANSACTION" }],
     }),
 
     withdrawMoney: builder.mutation({
@@ -20,10 +17,7 @@ export const agentApi = baseApi.injectEndpoints({
         method: "POST",
         data: userinfo,
       }),
-      invalidatesTags: (result, error, arg) => [
-        { type: "WALLET" },
-        { type: "TRANSACTION" },
-      ],
+      invalidatesTags: () => [{ type: "WALLET" }, { type: "TRANSACTION" }],
     }),
     updateProfile: builder.mutation({
       query: (userinfo) => ({
@@ -34,13 +28,6 @@ export const agentApi = baseApi.injectEndpoints({
       invalidatesTags: ["USER"],
     }),
 
-    // getTransactions: builder.query({
-    //   query: (params?: { type?: string; page?: number; limit?: number }) => ({
-
-    //     // url: "/agent/transaction-history",
-    //     // method: "GET",
-    //   }),
-    // }),
     getTransactions: builder.query({
       query: (params?: { type?: string; page?: number; limit?: number }) => {
         const searchParams = new URLSearchParams();

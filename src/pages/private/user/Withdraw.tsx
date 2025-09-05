@@ -20,6 +20,7 @@ import {
 import { useUserWithdrawMoneyMutation } from "@/redux/Api/userApi";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import z from "zod";
@@ -78,7 +79,7 @@ function Withdraw() {
                   control={form.control}
                   name="ammount"
                   render={({ field }) => (
-                    <FormItem>
+                    <FormItem id="withdraw_ammout">
                       <div className="flex flex-col gap-6">
                         <div className="grid gap-2">
                           <FormLabel>{data?.label}</FormLabel>
@@ -98,7 +99,12 @@ function Withdraw() {
             </Form>
           </CardContent>
           <CardFooter className="flex-col gap-2">
-            <Button form="f" type="submit" className="w-full">
+            <Button
+              id="withdraw_ammout_button"
+              form="f"
+              type="submit"
+              className="w-full"
+            >
               {data?.button}
             </Button>
           </CardFooter>

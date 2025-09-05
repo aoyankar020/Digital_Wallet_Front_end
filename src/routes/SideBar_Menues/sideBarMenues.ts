@@ -3,12 +3,11 @@ import { LayoutDashboard } from "lucide-react";
 import { lazy } from "react";
 
 const Agents = lazy(() => import("@/pages/private/admin/Agents"));
-const DashboardHome = lazy(() => import("@/pages/dashboard/home"));
+const AdminOverview = lazy(() => import("@/pages/private/admin/adminOverview"));
 const Users = lazy(() => import("@/pages/private/admin/users"));
 const Wallets = lazy(() => import("@/pages/private/admin/Wallets"));
 const Transitions = lazy(() => import("@/pages/private/admin/Trsnsactions"));
-const BlockWallet = lazy(() => import("@/pages/private/admin/BlockWallet"));
-const ApproveAgent = lazy(() => import("@/pages/private/admin/ApproveAgent"));
+
 export const adminSidebarsRoutes = [
   {
     title: "Dashboard",
@@ -19,7 +18,7 @@ export const adminSidebarsRoutes = [
         title: "Overview",
         url: "",
         Icon: LayoutDashboard,
-        Component: DashboardHome,
+        Component: AdminOverview,
       },
     ],
   },

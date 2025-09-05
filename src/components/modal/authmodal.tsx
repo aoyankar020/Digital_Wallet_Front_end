@@ -122,10 +122,8 @@ export default function AuthModal({
       let result;
       if (AsAgent) {
         result = await loginAgent(credentials).unwrap();
-        console.log("Login Result", result);
       } else {
         result = await loginUser(credentials).unwrap();
-        console.log("Login Result", result);
       }
       if (result.success) {
         const role = result?.data?.data?.role;
@@ -145,7 +143,6 @@ export default function AuthModal({
         }, 1000);
       }
     } catch (error: any) {
-      console.error("Login Error:", error?.data?.message);
       toast.warning(error?.data?.message);
     } finally {
       loginform.reset();

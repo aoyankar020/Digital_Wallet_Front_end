@@ -80,7 +80,7 @@ export const userSidebarsRoutes = [
   {
     title: "Settings",
     url: "#",
-    Icon: "LayoutDashboard",
+    Icon: LayoutDashboard,
     items: [
       {
         title: "Profile",

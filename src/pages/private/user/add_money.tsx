@@ -17,12 +17,15 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+
 import { useUserAddMoneyMutation } from "@/redux/Api/userApi";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import z from "zod";
+
 const addMoneySchema = z.object({
   ammount: z.coerce.number(),
 });
@@ -61,6 +64,7 @@ function AddMoney() {
       toast.warning(`${errorMessage} `);
     }
   };
+
   return (
     <>
       <div className="p-4">
@@ -76,7 +80,7 @@ function AddMoney() {
                   control={form.control}
                   name="ammount"
                   render={({ field }) => (
-                    <FormItem>
+                    <FormItem id="add_ammout">
                       <div className="flex flex-col gap-6">
                         <div className="grid gap-2">
                           <FormLabel>{data?.label}</FormLabel>
@@ -96,7 +100,12 @@ function AddMoney() {
             </Form>
           </CardContent>
           <CardFooter className="flex-col gap-2">
-            <Button form="f" type="submit" className="w-full">
+            <Button
+              id="add_ammout_button"
+              form="f"
+              type="submit"
+              className="w-full"
+            >
               {data?.button}
             </Button>
           </CardFooter>

@@ -1,7 +1,3 @@
-import { useState, useEffect } from "react";
-
-import { Skeleton } from "@/components/ui/skeleton";
-
 import Hero from "@/components/shared/hero";
 import Contact from "./contact";
 import Pricing from "./pricing";

@@ -4,7 +4,6 @@ import {
   CardContent,
   CardFooter,
   CardHeader,
-  CardTitle,
 } from "@/components/ui/card";
 import { useGetWalletsQuery } from "@/redux/Api/adminApi";
 import cardImg from "@/assets/images/de.png";

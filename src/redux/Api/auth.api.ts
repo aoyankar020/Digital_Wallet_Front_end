@@ -30,21 +30,21 @@ export const authApi = baseApi.injectEndpoints({
         method: "POST",
         data: userinfo,
       }),
-      invalidatesTags: ["AGENT"],
+      invalidatesTags: ["AGENTS"],
     }),
     logout: builder.mutation({
       query: () => ({
         url: "/auth/logout",
         method: "POST",
       }),
-      invalidatesTags: ["USER", "AGENT"],
+      invalidatesTags: ["USER", "AGENTS"],
     }),
     getMe: builder.query({
       query: () => ({
         url: "/user/me",
         method: "GET",
       }),
-      providesTags: ["USER", "AGENT"],
+      providesTags: ["USER", "AGENTS"],
     }),
 
     getMeAgent: builder.query({
@@ -52,7 +52,7 @@ export const authApi = baseApi.injectEndpoints({
         url: "/agent/me",
         method: "GET",
       }),
-      providesTags: ["USER", "AGENT"],
+      providesTags: ["USER", "AGENTS"],
     }),
   }),
 });

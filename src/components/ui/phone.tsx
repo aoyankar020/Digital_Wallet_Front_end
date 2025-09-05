@@ -1,11 +1,10 @@
-import React, { useId, useState } from "react";
+import React, { useId } from "react";
 import { ChevronDownIcon, PhoneIcon } from "lucide-react";
 import * as RPNInput from "react-phone-number-input";
 import flags from "react-phone-number-input/flags";
 
 import { cn } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 
 export default function Phone({
   value,

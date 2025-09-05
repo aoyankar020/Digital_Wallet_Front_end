@@ -4,5 +4,5 @@ export const ROLE = {
   USER: "USER",
   AGENT: "AGENT",
 };
-
+export const TOUR_KEY = "userOverviewTourSeen";
 export type TROLE = "ADMIN" | "USER" | "AGENT" | null;

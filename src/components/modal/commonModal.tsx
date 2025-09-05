@@ -22,7 +22,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect } from "react";
 import z from "zod";
 
-import type { CommonModalProps, IProfile } from "@/types";
+import type { CommonModalProps } from "@/types";
 const profileDetailsSchema = z.object({
   name: z.string(),
   email: z.email(),
